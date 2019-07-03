@@ -108,6 +108,11 @@ section {
   border-bottom: 2px solid #EAEAEA; 
 }
 
+.card__challengers{
+  font-weight:700;
+  color: #6E6E6E;   
+}
+
 h4{
   text-align:center;
   font-size: 2em;
@@ -115,11 +120,16 @@ h4{
   margin: 20px 0px 0px 0px;
 }
 
-.h4__winner{
+.card__winner-name{
+  color: #6E6E6E;
+}
+
+.card__winner{
   text-align: center;
   font-weight: 300;
   font-size: 2em;
   margin: 0px 0px 20px 0px;
+  color: #6E6E6E;
 }
 
 .card__delete-button{
@@ -129,6 +139,10 @@ h4{
   height: 20px;
   text-align: center;
   color: #d0d2d3;
+}
+
+.card-footer__game-data{
+  color: #6E6E6E;
 }
 
 .card-footer{
