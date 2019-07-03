@@ -127,6 +127,7 @@ h4 {
 .card__winner {
   text-align: center;
   font-weight: 300;
+}
   
 .h4__winner {
   font-size: 2em;
@@ -145,7 +146,7 @@ h4 {
   width:20px;
 }
 
-.card-footer__game-data{
+.card-footer__game-data {
   color: #6E6E6E;
 }
 
