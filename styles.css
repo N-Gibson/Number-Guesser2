@@ -36,6 +36,8 @@ h2 {
   margin: 0px;
 }
 
+/* Main content */
+
 main {
   display: flex;
   height: 90vh;
@@ -65,10 +67,6 @@ article {
   margin: 20px auto 5px auto;
 }
 
-.buttons {
-
-}
-
 .article__current-score {
   display: flex;
 }
@@ -89,6 +87,8 @@ article {
   text-align: left;
 }
 
+/* Winner Card */
+
 section {
   background-color: #D1D2D4;
   width: 50%;
@@ -96,46 +96,43 @@ section {
   padding: 20px 40px;
 }
 
-.section__right-card{
+.section__right-card {
+  background-color: #FFFFFF;
   border: 2px solid #EAEAEA;
   padding: 10px;
-  background-color: #FFFFFF;
 }
 
-.card-header{
+.card-header {
+  border-bottom: 2px solid #EAEAEA; 
   display: flex;
   justify-content: space-between;
-  border-bottom: 2px solid #EAEAEA; 
 }
 
-h4{
-  text-align:center;
+h4 {
   font-size: 2em;
   font-weight: 700;
   margin: 20px 0px 0px 0px;
+  text-align:center;
 }
 
-.h4__winner{
-  text-align: center;
-  font-weight: 300;
+.h4__winner {
   font-size: 2em;
+  font-weight: 300;
   margin: 0px 0px 20px 0px;
+  text-align: center;
 }
 
-.card__delete-button{
-  border-radius:50%;
+.card__delete-button {
   background-color: #808080;
-  width:20px;
+  border-radius:50%;
+  color: #d0d2d3;
   height: 20px;
   text-align: center;
-  color: #d0d2d3;
+  width:20px;
 }
 
-.card-footer{
+.card-footer {
+  border-top: 2px solid #EAEAEA;
   display: flex;
   justify-content: space-between;
-  border-top: 2px solid #EAEAEA;
 }
-
-
-
