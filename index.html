@@ -18,25 +18,25 @@
         <article class="article">
           <h3>Set Range</h3>
           <label>Min Range</label>
-          <input type="text">
+          <input id="min-range" type="number">
           <label>Max Range</label>
-          <input type="text">
-          <button>Update</button>
+          <input id="max-range" type="number">
+          <button id="update-button">Update</button>
         </article>
         <article class="article">
-          <p>The Current Range is <span>1</span> to <span>100</span></p>
-          <h3>Challenger 1</h3>
+          <p>The Current Range is <span id="min-number-display">1</span> to <span id="max-number-display">100</span></p>
+          <h3 class="challenger-1">Challenger 1</h3>
           <label>Name</label>
-          <input type="text">
+          <input id="player-1-name" type="text">
           <label>Guess</label>
-          <input type="text">
-          <h3>Challenger 2</h3>
+          <input id="player-1-guess" type="number">
+          <h3 class="challenger-2">Challenger 2</h3>
           <label>Name</label>
-          <input type="text">
+          <input id="player-2-name" type="text">
           <label>Guess</label>
-          <input type="text">
+          <input id="player-2-guess" type="number">
           <div class="buttons__container">
-            <button class="buttons">SUBMIT GUESS</button>
+            <button id="submit-button" class="buttons">SUBMIT GUESS</button>
             <button class="buttons">RESET GAME</button>
             <button class="buttons">CLEAR GAME</button>
           </div>
@@ -44,16 +44,16 @@
         <article class="article article__current-score">
           <div class="score-left">
             <h3 id="h3__latest-score">Latest Score</h3>
-            <p>Challenger 1 Name</p>
+            <p class="challenger-1">Challenger 1 Name</p>
             <p>current guess</p>
-            <p>97</p>
+            <p id="player-1-guess-display">97</p>
             <p>that's too high</p>
           </div>
           <div class="score-right">
             <h3>Latest Score</h3>
-            <p>Challenger 1 Name</p>
+            <p class="challenger-2">Challenger 2 Name</p>
             <p>current guess</p>
-            <p>97</p>
+            <p id="player-2-guess-display">97</p>
             <p>that's too high</p>
           </div>
         </article>
