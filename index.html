@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Number Guesser</title>
+  <link rel="sytlesheet" href="normalize.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta lang="en">
+</head>
+  <body>
+    <header>
+      <h1>NUMBER<span class="span__h1">GUESSER</span></h1>
+      <h2>ULTIMATE CHALLENGER EDITION</h2>
+    </header>
+    <main>
+      <aside>
+        <article class="article">
+          <h3>Set Range</h3>
+          <label>Min Range</label>
+          <input type="text">
+          <label>Max Range</label>
+          <input type="text">
+          <button>Update</button>
+        </article>
+        <article class="article">
+          <p>The Current Range is <span>1</span> to <span>100</span></p>
+          <h3>Challenger 1</h3>
+          <label>Name</label>
+          <input type="text">
+          <label>Guess</label>
+          <input type="text">
+          <h3>Challenger 2</h3>
+          <label>Name</label>
+          <input type="text">
+          <label>Guess</label>
+          <input type="text">
+          <div class="buttons__container">
+            <button class="buttons">SUBMIT GUESS</button>
+            <button class="buttons">RESET GAME</button>
+            <button class="buttons">CLEAR GAME</button>
+          </div>
+        </article>
+        <article class="article article__current-score">
+          <div class="score-left">
+            <h3 id="h3__latest-score">Latest Score</h3>
+            <p>Challenger 1 Name</p>
+            <p>current guess</p>
+            <p>97</p>
+            <p>that's too high</p>
+          </div>
+          <div class="score-right">
+            <h3>Latest Score</h3>
+            <p>Challenger 1 Name</p>
+            <p>current guess</p>
+            <p>97</p>
+            <p>that's too high</p>
+          </div>
+        </article>
+      </aside>
+      <section class="section__right">
+        <div>
+          <p>CHALLENGER 1 NAME</p>
+          <p>VS</p>
+          <p>CHALLENGER 2 NAME</p>
+        </div>
+        <h4>CHALLENGER 2 NAME</h4>
+        <p>WINNER</p>
+        <div>
+          <p><span>47 </span>GUESSES</p>
+          <p><span>1.3m </span>MINUTES</p>
+          <p>x</p>
+        </div>
+      </section>
+  </main>
+  </body>
+  <script type="text/javascript" src="main.js"></script>
+  <script type="text/javascript" src="class.js"></script>
+</html>
