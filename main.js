@@ -15,11 +15,10 @@ var player1Name = document.querySelector('#player-1-name');
 var player2Name = document.querySelector('#player-2-name');
 var challenger1 = document.querySelectorAll('.challenger-1');
 var challenger2 = document.querySelectorAll('.challenger-2');
-var randomNum = 0;
 var player1Hint = document.querySelector('#player-1-hint');
 var player2Hint = document.querySelector('#player-2-hint');
-var player1GuessNum;
-var player2GuessNum;
+// var player1GuessNum;
+// var player2GuessNum;
 
 updateButton.addEventListener('click', updateRange);
 submitButton.addEventListener('click', submitHandler);
@@ -47,6 +46,7 @@ function clearInputs(element1, element2) {
 }
 
 function displayGuess() {
+  
   if(player1Guess.value === "" || player2Guess === "") {
     if(player1Guess.value === "") {
       player1Guess.style.border = "2px #DD1972 solid";
@@ -70,22 +70,31 @@ function displayGuess() {
         player2Guess.style.border = "1px #ccc solid";
       }
 
-      this.player1GuessNum = parseInt(this.player1Guess.value);
-      this.player2GuessNum = parseInt(this.player2Guess.value);
+      var player1GuessNum = parseInt(player1Guess.value);
+      var player2GuessNum = parseInt(player2Guess.value);
+
       guessDisplay1.innerText = player1Guess.value;
       guessDisplay2.innerText = player2Guess.value;
       clearInputs(player1Guess, player2Guess);
       
-      if(this.player1GuessNum > this.randomNum) {
-        this.player1Hint.innerText = "that's too high";
+      if(player1GuessNum === randomNum) {
+        player1Hint.innerText = "BOOM!";
+        //trigger new card
+        //reset game
+      } else if(player1GuessNum > randomNum) {
+        player1Hint.innerText = "that's too high";
       } else {
-        this.player1Hint.innerText = "that's too low";
+        player1Hint.innerText = "that's too low";
       }
 
-      if(this.player2GuessNum > this.randomNum) {
-        this.player2Hint.innerText = "that's too high";
+      if(player2GuessNum === this.randomNum) {
+        player2Hint.innerText = "BOOM!";
+        //trigger new card
+        //reset game
+      } else if(player2GuessNum > this.randomNum) {
+        player2Hint.innerText = "that's too high";
       } else {
-        this.player2Hint.innerText = "that's too low";
+        player2Hint.innerText = "that's too low";
       }
   }
 }
