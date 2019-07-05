@@ -15,14 +15,24 @@ var player1Name = document.querySelector('#player-1-name');
 var player2Name = document.querySelector('#player-2-name');
 var challenger1 = document.querySelectorAll('.challenger-1');
 var challenger2 = document.querySelectorAll('.challenger-2');
+// var randomNum = 0;
+var player1Hint = document.querySelector('#player-1-hint');
+var player2Hint = document.querySelector('#player-2-hint');
+var player1GuessNum;
+var player2GuessNum;
+var rightSection = document.querySelector('.section__right');
 
 updateButton.addEventListener('click', updateRange);
 submitButton.addEventListener('click', submitHandler);
 randomNumber(minNumber, maxNumber);
+console.log(randomNum);
+
 
 function submitHandler() {
   displayGuess();
   updateNames();
+  playerFeedback(player1Guess, player1Hint);
+  playerFeedback(player2Guess, player2Hint);
 }
 
 function updateRange() {
@@ -63,11 +73,23 @@ function displayGuess() {
         player2Guess.style.border = "1px #ccc solid";
       }
 
-      
-
+      this.player1GuessNum = parseInt(this.player1Guess.value);
+      this.player2GuessNum = parseInt(this.player2Guess.value);
       guessDisplay1.innerText = player1Guess.value;
       guessDisplay2.innerText = player2Guess.value;
-      clearInputs(player1Guess, player2Guess);
+      // clearInputs(player1Guess, player2Guess);
+      
+      if(this.player1GuessNum > this.randomNum) {
+        this.player1Hint.innerText = "that's too high";
+      } else {
+        this.player1Hint.innerText = "that's too low";
+      }
+
+      if(this.player2GuessNum > this.randomNum) {
+        this.player2Hint.innerText = "that's too high";
+      } else {
+        this.player2Hint.innerText = "that's too low";
+      }
   }
 }
 
@@ -106,8 +128,44 @@ function updateNames() {
 }
 
 function randomNumber(minNum, maxNum) {
-  var randomNum = Math.floor(Math.random() * (maxNum - minNum) + minNum); 
-  console.log(randomNum);
+  randomNum = Math.floor(Math.random() * (maxNum - minNum) + minNum); 
+  return randomNum;
 }
 
+function playerFeedback(playerGuess, playerHint) {
+  if(Number(playerGuess.value) > (randomNum.value)) {
+    playerHint.innerText = ('That\'s too high');
+  } else if(Number(playerGuess.value) < (randomNum.value)) {
+    playerHint.innerText = ('That\'s too low');
+  } else {
+    playerHint.innerText = ('BOOM!!!');
+    console.log(playerGuess.value);
+    console.log(randomNum.value)
+    console.log(playerHint.innerText);
+    appendCard(player1Guess, player1Name, player2Name);
+    appendCard(player2Guess, player1Name, player2Name);
+  }
+}
+
+
+function appendCard(playerGuess, player1Name, player2Name) {
+  if(Number(playerGuess.value) === Number(randomNum)) {
+    rightSection.insertAdjacentHTML ('afterbegin', `<article class="section__right-card">
+    <div class="card-header">
+      <p class="card__challengers">${player1Name.value}</p>
+      <p>VS</p>
+      <p class="card__challengers">${player2Name.value}</p>
+    </div>
+    <h4 class="card__winner-name">${player1Name.value}</h4>
+    <p class="card__winner">WINNER</p>
+    <div class="card-footer">
+      <p class="card-footer__game-data"><span>47 </span>GUESSES</p>
+      <p><span>1.3m </span>MINUTES</p>
+      <p class="card__delete-button">X</p>
+    </div>
+  </article>`)
+  } else {
+    return;
+  }
+}
 
