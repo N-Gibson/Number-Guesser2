@@ -1,6 +1,6 @@
+// Gloabal Variables
 var minNumber = 1;
 var maxNumber = 100;
-
 var minNumberDisplay = document.querySelector('#min-number-display');
 var maxNumberDisplay = document.querySelector('#max-number-display');
 var minRange = document.querySelector('#min-range');
@@ -22,17 +22,25 @@ var player1GuessNum;
 var player2GuessNum;
 var rightSection = document.querySelector('.section__right');
 
+// Event Listeners
 updateButton.addEventListener('click', updateRange);
 submitButton.addEventListener('click', submitHandler);
+
+// Functions on page load
 randomNumber(minNumber, maxNumber);
 console.log(randomNum);
 
-
+// Functions
 function submitHandler() {
   displayGuess();
   updateNames();
   playerFeedback(player1Guess, player1Hint);
   playerFeedback(player2Guess, player2Hint);
+  clearInputs(player1Guess, player2Guess);
+}
+
+function randomNumber(minNum, maxNum) {
+  return randomNum = Math.floor(Math.random() * (maxNum - minNum) + minNum);
 }
 
 function updateRange() {
@@ -125,10 +133,6 @@ function updateNames() {
         challenger2[i].innerText = player2Name.value;
       }
     }
-}
-
-function randomNumber(minNum, maxNum) {
-  return randomNum = Math.floor(Math.random() * (maxNum - minNum) + minNum);
 }
 
 function playerFeedback(playerGuess, playerHint) {
