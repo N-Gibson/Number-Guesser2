@@ -49,6 +49,10 @@ aside {
   width: 50%;
 }
 
+h3 {
+  color: #606060;
+}
+
 article {
   display: block;
   width: 100%;
@@ -85,6 +89,17 @@ article {
 
 #h3__latest-score {
   text-align: left;
+}
+
+#article__current-range {
+  color: #6E6E6E;
+}
+
+#min-number-display,
+#max-number-display {
+  color: #606060;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 /* Winner Card */
