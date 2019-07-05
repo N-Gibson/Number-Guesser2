@@ -65,6 +65,10 @@ article {
   padding: 15px;
 }
 
+input {
+  width: 100%;
+}
+
 .buttons__container {
   display: flex;
   justify-content: space-between;
