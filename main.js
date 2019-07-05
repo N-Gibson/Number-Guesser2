@@ -17,11 +17,15 @@ var challenger1 = document.querySelectorAll('.challenger-1');
 var challenger2 = document.querySelectorAll('.challenger-2');
 var player1Hint = document.querySelector('#player-1-hint');
 var player2Hint = document.querySelector('#player-2-hint');
-// var player1GuessNum;
-// var player2GuessNum;
+var resetButton = document.querySelector('#reset-button');
+var clearButton = document.querySelector('#clear-button');
+
 
 updateButton.addEventListener('click', updateRange);
 submitButton.addEventListener('click', submitHandler);
+resetButton.addEventListener('click', resetGame);
+clearButton.addEventListener('click', clearGame);
+
 randomNumber(minNumber, maxNumber);
 console.log(this.randomNum);
 
@@ -134,8 +138,40 @@ function updateNames() {
 }
 
 function randomNumber(minNum, maxNum) {
-  var randomNum = Math.floor(Math.random() * (maxNum - minNum) + minNum); 
+  var randomNum = Math.floor(Math.random() * (maxNum - minNum) + minNum);
+  console.log(randomNum); 
   return this.randomNum = randomNum;
+}
+
+function clearGame() { 
+  clearInputs(minRange, maxRange);
+  clearInputs(player1Name, player1Guess);
+  clearInputs(player2Name, player2Guess);
+
+  guessDisplay1.innerText = "-";
+  guessDisplay2.innerText = "-";
+  player1Hint.innerText = "-";
+  player2Hint.innerText = "-";
+}
+
+function resetGame() {
+  
+  clearGame();
+
+  minNumberDisplay.innerText = "1";
+  maxNumberDisplay.innerText = "100";
+
+  for(var i = 0; i < challenger1.length; i++) {
+    challenger1[i].innerText = "Challenger 1";
+  }
+
+  for(var i = 0; i < challenger2.length; i++) {
+    challenger2[i].innerText = "Challenger 2";
+  }
+
+  randomNumber(1,100);
+
+
 }
 
 
