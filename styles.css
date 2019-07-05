@@ -160,6 +160,12 @@ h4 {
   width:20px;
 }
 
+.card__delete-button:hover {
+  cursor: pointer;
+  background-color: #DD1972;
+  color: FFF;
+}
+
 .card-footer__game-data {
   color: #6E6E6E;
 }
