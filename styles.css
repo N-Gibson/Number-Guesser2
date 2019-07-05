@@ -40,7 +40,7 @@ h2 {
 
 main {
   display: flex;
-  height: 90vh;
+  height: 100%;
 }
 
 aside {
@@ -107,7 +107,6 @@ article {
 section {
   background-color: #D1D2D4;
   width: 50%;
-  height:90vh;
   padding: 20px 40px;
 }
 
