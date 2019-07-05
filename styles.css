@@ -20,7 +20,7 @@ header {
 
 h1 {
   color: #ED458B;
-  font-size: 3em;
+  font-size: 4.5em;
   font-weight: 700;
   margin: 0;
 }
@@ -31,7 +31,7 @@ h1 {
 
 h2 {
   color: #FFFFFF;
-  font-size: 1.2em;
+  font-size: 1.5em;
   font-weight: 300;
   margin: 0px;
 }
@@ -40,13 +40,17 @@ h2 {
 
 main {
   display: flex;
-  height: 90vh;
+  height: 90%;
 }
 
 aside {
   background-color: #F5F6F8;
   padding: 30px;
   width: 50%;
+}
+
+h3 {
+  color: #606060;
 }
 
 article {
@@ -87,12 +91,22 @@ article {
   text-align: left;
 }
 
+#article__current-range {
+  color: #6E6E6E;
+}
+
+#min-number-display,
+#max-number-display {
+  color: #606060;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
 /* Winner Card */
 
 section {
   background-color: #D1D2D4;
   width: 50%;
-  height:90vh;
   padding: 20px 40px;
 }
 

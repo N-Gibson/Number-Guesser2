@@ -41,27 +41,68 @@ function clearInputs(element1, element2) {
 
 function displayGuess() {
   if(player1Guess.value === "" || player2Guess === "") {
-    return;
+    if(player1Guess.value === "") {
+      player1Guess.style.border = "2px #DD1972 solid";
+    } else {
+      player1Guess.style.border = "1px #ccc solid";
+    }
+
+    if(player2Guess.value === "") {
+      player2Guess.style.border = "2px #DD1972 solid";
+    } else {
+      player2Guess.style.border = "1px #ccc solid";
+    }
+
   } else {
-  guessDisplay1.innerText = player1Guess.value;
-  guessDisplay2.innerText = player2Guess.value;
-  clearInputs(player1Guess, player2Guess);
+      
+      if(player1Guess.value !== ""){
+        player1Guess.style.border = "1px #ccc solid";
+      }
+
+      if(player2Guess.value !== ""){
+        player2Guess.style.border = "1px #ccc solid";
+      }
+
+      
+
+      guessDisplay1.innerText = player1Guess.value;
+      guessDisplay2.innerText = player2Guess.value;
+      clearInputs(player1Guess, player2Guess);
   }
 }
 
 function updateNames() {
   if(player1Name.value === "" || player2Name.value === "") {
-    return;
+    
+    if(player1Name.value === "") {
+      player1Name.style.border = "2px #DD1972 solid";
+    } else {
+      player1Name.style.border = "1px #ccc solid";
+    }
+
+    if(player2Name.value === "") {
+      player2Name.style.border = "2px #DD1972 solid";
+    } else {
+      player2Name.style.border = "1px #ccc solid";
+    }
   } else {
 
-  for(var i = 0; i < challenger1.length; i++) {
-    challenger1[i].innerText = player1Name.value;
-  }
+      if(player1Name !== "") {
+        player1Name.style.border = "1px #ccc solid";
+      }
 
-  for(var i = 0; i < challenger2.length; i++) {
-    challenger2[i].innerText = player2Name.value;
+      if(player2Name.value !== "") {
+        player2Name.style.border = "1px #ccc solid";
+      }
+
+      for(var i = 0; i < challenger1.length; i++) {
+        challenger1[i].innerText = player1Name.value;
+      }
+
+      for(var i = 0; i < challenger2.length; i++) {
+        challenger2[i].innerText = player2Name.value;
+      }
     }
-  }
 }
 
 function randomNumber(minNum, maxNum) {
