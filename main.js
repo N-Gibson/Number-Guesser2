@@ -15,7 +15,7 @@ var player1Name = document.querySelector('#player-1-name');
 var player2Name = document.querySelector('#player-2-name');
 var challenger1 = document.querySelectorAll('.challenger-1');
 var challenger2 = document.querySelectorAll('.challenger-2');
-// var randomNum = 0;
+var randomNum;
 var player1Hint = document.querySelector('#player-1-hint');
 var player2Hint = document.querySelector('#player-2-hint');
 var player1GuessNum;
@@ -26,6 +26,7 @@ updateButton.addEventListener('click', updateRange);
 submitButton.addEventListener('click', submitHandler);
 randomNumber(minNumber, maxNumber);
 console.log(randomNum);
+// console.log(randomNumber);
 
 
 function submitHandler() {
@@ -128,19 +129,18 @@ function updateNames() {
 }
 
 function randomNumber(minNum, maxNum) {
-  randomNum = Math.floor(Math.random() * (maxNum - minNum) + minNum); 
-  return randomNum;
+  return randomNum = Math.floor(Math.random() * (maxNum - minNum) + minNum);
 }
 
 function playerFeedback(playerGuess, playerHint) {
-  if(Number(playerGuess.value) > (randomNum.value)) {
+  if(Number(playerGuess.value) > (randomNum)) {
     playerHint.innerText = ('That\'s too high');
-  } else if(Number(playerGuess.value) < (randomNum.value)) {
+  } else if(Number(playerGuess.value) < (randomNum)) {
     playerHint.innerText = ('That\'s too low');
   } else {
     playerHint.innerText = ('BOOM!!!');
     console.log(playerGuess.value);
-    console.log(randomNum.value)
+    console.log(randomNum);
     console.log(playerHint.innerText);
     appendCard(player1Guess, player1Name, player2Name);
     appendCard(player2Guess, player1Name, player2Name);
