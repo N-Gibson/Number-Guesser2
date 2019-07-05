@@ -26,7 +26,6 @@ updateButton.addEventListener('click', updateRange);
 submitButton.addEventListener('click', submitHandler);
 randomNumber(minNumber, maxNumber);
 console.log(randomNum);
-// console.log(randomNumber);
 
 
 function submitHandler() {
@@ -139,24 +138,21 @@ function playerFeedback(playerGuess, playerHint) {
     playerHint.innerText = ('That\'s too low');
   } else {
     playerHint.innerText = ('BOOM!!!');
-    console.log(playerGuess.value);
-    console.log(randomNum);
-    console.log(playerHint.innerText);
-    appendCard(player1Guess, player1Name, player2Name);
-    appendCard(player2Guess, player1Name, player2Name);
+    appendCard(player1Guess, player1Name, player2Name, player1Name);
+    appendCard(player2Guess, player1Name, player2Name, player2Name);
   }
 }
 
 
-function appendCard(playerGuess, player1Name, player2Name) {
-  if(Number(playerGuess.value) === Number(randomNum)) {
+function appendCard(playerGuess, player1Name, player2Name, winnerName) {
+  if(Number(playerGuess.value) === randomNum) {
     rightSection.insertAdjacentHTML ('afterbegin', `<article class="section__right-card">
     <div class="card-header">
       <p class="card__challengers">${player1Name.value}</p>
       <p>VS</p>
       <p class="card__challengers">${player2Name.value}</p>
     </div>
-    <h4 class="card__winner-name">${player1Name.value}</h4>
+    <h4 class="card__winner-name">${winnerName.value}</h4>
     <p class="card__winner">WINNER</p>
     <div class="card-footer">
       <p class="card-footer__game-data"><span>47 </span>GUESSES</p>
