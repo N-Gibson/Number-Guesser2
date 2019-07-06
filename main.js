@@ -107,7 +107,6 @@ function isGoodGuess(element) {
   var maxInt = parseInt(maxNumberDisplay.innerText);
 
   if(Number.isInteger(elementInt) && (elementInt >= minInt) && (elementInt <= maxInt)) {
-    guessDisplay1.innerText
     return true;
   } else {
     if(!(Number.isInteger(elementInt))) {
