@@ -83,6 +83,7 @@ button {
   background-color: #7F7F7F;
   border-radius: 20px;
   color: #FFFFFF;
+  cursor: pointer;
   font-size: 1.2em;
   font-weight: 700;
   height: 40px;
