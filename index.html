@@ -16,27 +16,37 @@
     <main>
       <aside>
         <article class="article">
-          <h3>Set Range</h3>
-          <article>
+          <h3 class="h3__set-range">Set Range</h3>
+          <form class="form__update-min">
             <label>Min Range</label>
             <input id="min-range" type="number">
-          </article>
-          <label>Max Range</label>
-          <input id="max-range" type="number">
-          <button id="update-button">Update</button>
+          </form>
+          <form class="form__update-max">
+            <label>Max Range</label>
+            <input id="max-range" type="number">
+          </form>
+          <button id="update-button">UPDATE</button>
         </article>
         <article class="article">
           <p id="article__current-range">The Current Range is <span id="min-number-display">1</span> to <span id="max-number-display">100</span></p>
           <h3 class="challenger-1">Challenger 1</h3>
-          <label>Name</label>
-          <input id="player-1-name" type="text">
-          <label>Guess</label>
-          <input id="player-1-guess" type="number">
+          <form class="form__player-1-name">
+            <label>Name</label>
+            <input id="player-1-name" type="text">
+          </form>
+          <form class="form__player-1-guess">
+            <label>Guess</label>
+            <input id="player-1-guess" type="number">
+          </form>
           <h3 class="challenger-2">Challenger 2</h3>
-          <label>Name</label>
-          <input id="player-2-name" type="text">
-          <label>Guess</label>
-          <input id="player-2-guess" type="number">
+          <form class="form__player-2-name">
+            <label>Name</label>
+            <input id="player-2-name" type="text">
+          </form>
+          <form class="form__player-2-guess">
+            <label>Guess</label>
+            <input id="player-2-guess" type="number">
+          </form>
           <div class="buttons__container">
             <button id="submit-button" class="buttons">SUBMIT GUESS</button>
             <button class="buttons">RESET GAME</button>
@@ -52,7 +62,6 @@
             <p id="player-1-hint">that's too high</p>
           </div>
           <div class="score-right">
-            <h3>Latest Score</h3>
             <p class="challenger-2">Challenger 2 Name</p>
             <p>current guess</p>
             <p id="player-2-guess-display">97</p>
