@@ -244,13 +244,13 @@ h4 {
 
 /* Error toggle */
 
-.input__errors,
+/* .input__errors,
 .player-1-name-error,
 .player-1-guess-error, 
 .player-2-name-error,
 .player-2-guess-error {
   border: 2px solid #ED448A;
-}
+} */
 
 img {
   height: 20px;
@@ -266,7 +266,6 @@ img {
 .div__guess-2-error {
   display: flex;
   height: 20px;
-
 }
 
 .p__error-message {

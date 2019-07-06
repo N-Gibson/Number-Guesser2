@@ -25,9 +25,11 @@ var player2Hint = document.querySelector('#player-2-hint');
 var player1GuessNum;
 var player2GuessNum;
 var rightSection = document.querySelector('.section__right');
+var minError = document.querySelector('.div__min-range-error');
+var maxError = document.querySelector('.div__max-range-error');
 
 // Event Listeners
-updateButton.addEventListener('click', updateRange);
+updateButton.addEventListener('click', updateHandler);
 submitButton.addEventListener('click', submitHandler);
 resetButton.addEventListener('click', resetGame);
 clearButton.addEventListener('click', clearGame);
@@ -35,6 +37,7 @@ clearButton.addEventListener('click', clearGame);
 // Functions on page load
 randomNumber(minNumber, maxNumber);
 console.log(randomNum);
+toggleRangeError()
 
 // Functions
 function submitHandler() {
@@ -45,17 +48,26 @@ function submitHandler() {
   clearInputs(player1Guess, player2Guess);
 }
 
+function updateHandler() {
+  toggleRangeError();
+}
+
 function randomNumber(minNum, maxNum) {
   return randomNum = Math.floor(Math.random() * (maxNum - minNum) + minNum);
 }
 
 function updateRange() {
+  if(minRange.value === '' && maxRange.value === ''){
+    minNumberDisplay.innerText = '1';
+    maxNumberDisplay.innerText = '100';
+  } else {
 	minNumberDisplay.innerText = minRange.value;
 	maxNumberDisplay.innerText = maxRange.value;
   var minInt = parseInt(minNumberDisplay.innerText);
   var maxInt = parseInt(maxNumberDisplay.innerText);
   clearInputs(minRange, maxRange);
   randomNumber(minInt, maxInt);
+  }
 }
 
 function clearInputs(element1, element2) {
@@ -224,5 +236,22 @@ function appendCard(playerGuess, player1Name, player2Name, winnerName) {
   </article>`)
   } else {
     return;
+  }
+}
+
+function toggleRangeError() {
+  if(parseInt(minRange.value) >= parseInt(maxRange.value)) {
+    console.log(minRange.value);
+    console.log(maxRange.value)
+    minError.style.visibility = 'visible';
+    minRange.style = 'border: 2px solid #F74D9B';
+    maxError.style.visibility = 'visible';
+    maxRange.style = 'border: 2px solid #F74D9B';
+  } else {
+    minError.style.visibility = 'hidden';
+    minRange.style = 'border: 2px solid #EAEAEA';
+    maxError.style.visibility = 'hidden';
+    maxRange.style = 'border: 2px solid #EAEAEA';
+    updateRange();
   }
 }
