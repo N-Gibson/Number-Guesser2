@@ -87,6 +87,8 @@ function displayGuess() {
       if(player2Guess.value !== ""){
         player2Guess.style.border = "1px #ccc solid";
       }
+    }
+  }
 
 //       var player1GuessNum = parseInt(player1Guess.value);
 //       var player2GuessNum = parseInt(player2Guess.value);

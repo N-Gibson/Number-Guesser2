@@ -121,7 +121,7 @@ input {
 .article__current-score {
   display: flex;
 }
-
+ 
 .score-left {
   border-right: 1px solid #EAEAEA;
   text-align: center;
@@ -240,4 +240,11 @@ h4 {
   border-top: 2px solid #EAEAEA;
   display: flex;
   justify-content: space-between;
+}
+
+/* Error toggle */
+
+.input__errors {
+  border: 2px solid #ED448A;
+  
 }
