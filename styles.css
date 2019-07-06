@@ -244,7 +244,32 @@ h4 {
 
 /* Error toggle */
 
-.input__errors {
+.input__errors,
+.player-1-name-error,
+.player-1-guess-error, 
+.player-2-name-error,
+.player-2-guess-error {
   border: 2px solid #ED448A;
-  
+}
+
+img {
+  height: 20px;
+  margin: 5px;
+  width: 20px;
+}
+
+.div__min-range-error,
+.div__max-range-error,
+.div__name-1-error,
+.div__name-2-error,
+.div__guess-1-error,
+.div__guess-2-error {
+  display: flex;
+  height: 20px;
+
+}
+
+.p__error-message {
+  color: #ED458B;
+  margin: 5px 0px 0px 0px;
 }
