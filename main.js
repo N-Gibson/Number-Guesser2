@@ -22,8 +22,6 @@ var clearButton = document.querySelector('#clear-button');
 var randomNum;
 var player1Hint = document.querySelector('#player-1-hint');
 var player2Hint = document.querySelector('#player-2-hint');
-var player1GuessNum;
-var player2GuessNum;
 var rightSection = document.querySelector('.section__right');
 
 // Event Listeners
@@ -50,12 +48,38 @@ function randomNumber(minNum, maxNum) {
 }
 
 function updateRange() {
-	minNumberDisplay.innerText = minRange.value;
-	maxNumberDisplay.innerText = maxRange.value;
-  var minInt = parseInt(minNumberDisplay.innerText);
-  var maxInt = parseInt(maxNumberDisplay.innerText);
-  clearInputs(minRange, maxRange);
-  randomNumber(minInt, maxInt);
+  var isGoodRange = isRangeGood();
+
+  if(isGoodRange) {
+    minNumberDisplay.innerText = minRange.value;
+    maxNumberDisplay.innerText = maxRange.value;
+
+    var minInt = parseInt(minNumberDisplay.innerText);
+    var maxInt = parseInt(maxNumberDisplay.innerText);
+
+    clearInputs(minRange, maxRange);
+    randomNumber(minInt, maxInt);
+    console.log(randomNum);//logs new random number for testing
+  }
+}
+
+function isRangeGood(){
+  var minInt = parseInt(minRange.value);
+  var maxInt = parseInt(maxRange.value);
+
+  if((Number.isInteger(minInt)) && (Number.isInteger(maxInt))) {
+    if(minInt < maxInt) {
+      return true;
+    } else {
+      //user entered min >= max
+      alert("bad range");
+      return false;
+    }
+  } else {
+    //user entered e
+    alert("non int");
+    return false;
+  }
 }
 
 function clearInputs(element1, element2) {
@@ -64,75 +88,52 @@ function clearInputs(element1, element2) {
 }
 
 function displayGuess() {
-  
-  if(player1Guess.value === "" || player2Guess === "") {
-    if(player1Guess.value === "") {
-      player1Guess.style.border = "2px #DD1972 solid";
-    } else {
-      player1Guess.style.border = "1px #ccc solid";
-    }
+  var isGoodInt = isGoodGuess(player1Guess);
+  var isGoodInt2 = isGoodGuess(player2Guess);
 
-    if(player2Guess.value === "") {
-      player2Guess.style.border = "2px #DD1972 solid";
-    } else {
-      player2Guess.style.border = "1px #ccc solid";
-    }
+  badInputHandler(player1Guess, isGoodInt);
+  badInputHandler(player2Guess, isGoodInt2);
 
+  if(isGoodInt && isGoodInt2) {
+    updateGuesses();
+  }
+}
+
+function isGoodGuess(element) {
+  var elementInt = parseInt(element.value);
+  var minInt = parseInt(minNumberDisplay.innerText);
+  var maxInt = parseInt(maxNumberDisplay.innerText);
+
+  if(Number.isInteger(elementInt) && (elementInt >= minInt) && (elementInt <= maxInt)) {
+    guessDisplay1.innerText
+    return true;
   } else {
-      
-      if(player1Guess.value !== ""){
-        player1Guess.style.border = "1px #ccc solid";
-      }
+    if(!(Number.isInteger(elementInt))) {
+      //display error message for notInt
+      alert("not integer");
+    } else if(elementInt < minInt) {
+      //display error for less than minimum
+      alert("less than min"); 
+    } else {
+      //display error for more than max
+      alert("more than max");
+    }
+    return false;
+  }
+}
 
-      if(player2Guess.value !== ""){
-        player2Guess.style.border = "1px #ccc solid";
-      }
+function badInputHandler(element, isGood) {
+  if(isGood) {
+    element.style.border = "1px #ccc solid";
+  } else {
+    element.style.border = "2px #ED458B solid";
+  }
+}
 
-//       var player1GuessNum = parseInt(player1Guess.value);
-//       var player2GuessNum = parseInt(player2Guess.value);
-
-//       guessDisplay1.innerText = player1Guess.value;
-//       guessDisplay2.innerText = player2Guess.value;
-//       clearInputs(player1Guess, player2Guess);
-      
-//       if(player1GuessNum === randomNum) {
-//         player1Hint.innerText = "BOOM!";
-//         //trigger new card
-//         //reset game
-//       } else if(player1GuessNum > randomNum) {
-//         player1Hint.innerText = "that's too high";
-//       } else {
-//         player1Hint.innerText = "that's too low";
-//       }
-
-//       if(player2GuessNum === this.randomNum) {
-//         player2Hint.innerText = "BOOM!";
-//         //trigger new card
-//         //reset game
-//       } else if(player2GuessNum > this.randomNum) {
-//         player2Hint.innerText = "that's too high";
-//       } else {
-//         player2Hint.innerText = "that's too low";
-    
-//       this.player1GuessNum = parseInt(this.player1Guess.value);
-//       this.player2GuessNum = parseInt(this.player2Guess.value);
-//       guessDisplay1.innerText = player1Guess.value;
-//       guessDisplay2.innerText = player2Guess.value;
-//       // clearInputs(player1Guess, player2Guess);
-      
-//       if(this.player1GuessNum > this.randomNum) {
-//         this.player1Hint.innerText = "that's too high";
-//       } else {
-//         this.player1Hint.innerText = "that's too low";
-//       }
-
-//       if(this.player2GuessNum > this.randomNum) {
-//         this.player2Hint.innerText = "that's too high";
-//       } else {
-//         this.player2Hint.innerText = "that's too low";
-//       }
-//   }
-// }
+function updateGuesses(){
+  guessDisplay1.innerText = player1Guess.value;
+  guessDisplay2.innerText = player2Guess.value;
+}
 
 function updateNames() {
   if(player1Name.value === "" || player2Name.value === "") {
