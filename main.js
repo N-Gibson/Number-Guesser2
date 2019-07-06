@@ -27,6 +27,10 @@ var player2GuessNum;
 var rightSection = document.querySelector('.section__right');
 var minError = document.querySelector('.div__min-range-error');
 var maxError = document.querySelector('.div__max-range-error');
+var name1Error = document.querySelector('.div__name-1-error');
+var name2Error = document.querySelector('.div__name-2-error');
+var guess1Error = document.querySelector('.div__guess-1-error');
+var guess2Error = document.querySelector('.div__guess-2-error');
 
 // Event Listeners
 updateButton.addEventListener('click', updateHandler);
@@ -36,11 +40,14 @@ clearButton.addEventListener('click', clearGame);
 
 // Functions on page load
 randomNumber(minNumber, maxNumber);
-console.log(randomNum);
 toggleRangeError()
+nameErrors();
+guessErrors(player1Guess, guess1Error);
+guessErrors(player2Guess, guess2Error);
 
 // Functions
 function submitHandler() {
+  nameErrors();
   displayGuess();
   updateNames();
   playerFeedback(player1Guess, player1Hint);
@@ -241,8 +248,6 @@ function appendCard(playerGuess, player1Name, player2Name, winnerName) {
 
 function toggleRangeError() {
   if(parseInt(minRange.value) >= parseInt(maxRange.value)) {
-    console.log(minRange.value);
-    console.log(maxRange.value)
     minError.style.visibility = 'visible';
     minRange.style = 'border: 2px solid #F74D9B';
     maxError.style.visibility = 'visible';
@@ -253,5 +258,29 @@ function toggleRangeError() {
     maxError.style.visibility = 'hidden';
     maxRange.style = 'border: 2px solid #EAEAEA';
     updateRange();
+  }
+}
+
+function nameErrors() {
+  if(player1Name === '' && player2Name === '') {
+    name1Error.style.visibility = 'visible';
+    player1Name.style = 'border: 2px solid #F74D9B';
+    name2Error.style.visibility = 'visible';
+    player2Name.style = 'border: 2px solid #F74D9B';
+  } else {
+    name1Error.style.visibility = 'hidden';
+    player1Name.style = 'border: 2px solid #EAEAEA';
+    name2Error.style.visibility = 'hidden';
+    player2Name.style = 'border: 2px solid #EAEAEA';
+  }
+}
+
+function guessErrors(guesser, guessError) {
+  if(guesser.value === '' || guesser.value > parseInt(maxNumberDisplay.innerText) || guesser.value < parseInt(minNumberDisplay.innerText)) {
+    guessError.style.visibility = 'visible';
+    guesser.style = 'border: 2px solid #F74D9B'
+  } else {
+    guessError.style.visibility = 'hidden';
+    guesser.style = 'border: 2px solid #EAEAEA';
   }
 }
