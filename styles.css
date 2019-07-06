@@ -129,16 +129,20 @@ input {
 
 .score-right {
   border-left: 1px solid #EAEAEA;
+  padding-top: 35px;
   text-align: center;
   width: 50%;
 }
 
 #h3__latest-score {
+  font-size: 1.5em;
+  margin: 0px;
   text-align: left;
 }
 
 #article__current-range {
   color: #6E6E6E;
+  font-size: 1.1em;
 }
 
 #min-number-display,
@@ -148,6 +152,27 @@ input {
   font-weight: bold;
 }
 
+#player-1-guess-display,
+#player-2-guess-display {
+  color: #ED458A;
+  font-size: 5em;
+  font-weight: 700;
+  margin: 0px;
+}
+
+.challenger-1,
+.challenger-2 {
+  color: #606060;
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+
+#player-1-hint,
+#player-2-hint {
+  font-size: 1.2em;
+  margin: 0px;
+}
 /* Winner Card */
 
 section {
