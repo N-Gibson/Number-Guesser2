@@ -72,11 +72,13 @@ function isRangeGood(){
       return true;
     } else {
       //user entered min >= max
+      clearInputs(minRange, maxRange);
       alert("bad range");
       return false;
     }
   } else {
     //user entered e
+    clearInputs(minRange, maxRange);
     alert("non int");
     return false;
   }
