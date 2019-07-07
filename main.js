@@ -192,7 +192,7 @@ function updateNames(){
   checkNames();
   checkGuesses();
   updateBorders();
-  if(player1Guess.value === "" && player2Guess.value === "") {
+  if(player1Guess.value === "" || player2Guess.value === "") {
     return;
    } else {
     changeNames();
@@ -200,7 +200,7 @@ function updateNames(){
 }
 
 function changeNames() {
-  if(player1Name.value === "" && player2Name.value === "") {
+  if(player1Name.value === "" || player2Name.value === "") {
     return;
   } else {
   for(var i = 0; i < challenger1.length; i++) {
@@ -290,7 +290,7 @@ function checkNames() {
 function checkGuesses(){
   if(player1Guess.value === "") {
     guess1ErrorDiv.style.visibility = "visible";
-  } else if((player1Name.value === "") && (player1Guess.value === "")) {
+  } else if((player1Name.value === "") || (player1Guess.value === "")) {
     return;
   } else {
     guess1ErrorDiv.style.visibility = "hidden";
@@ -298,7 +298,7 @@ function checkGuesses(){
 
   if(player2Guess.value === "") {
     guess2ErrorDiv.style.visibility = "visible";
-  } else if((player2Name.value) === "" && (player2Guess.value === "")) {
+  } else if((player2Name.value) === "" || (player2Guess.value === "")) {
     return;
   } else {
     guess2ErrorDiv.style.visibility = "hidden";
