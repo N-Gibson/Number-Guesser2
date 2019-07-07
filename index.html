@@ -19,11 +19,19 @@
           <h3 class="h3__set-range">Set Range</h3>
           <form class="form__update-min">
             <label>Min Range</label>
-            <input id="min-range" type="number">
+            <input id="min-range" class="input__min-error" type="number">
+            <div class="div__min-range-error">
+              <img src="images/error-icon.svg">
+              <p class="p__error-message">Enter a valid range</p>
+            </div>
           </form>
           <form class="form__update-max">
             <label>Max Range</label>
-            <input id="max-range" type="number">
+            <input id="max-range" class="input__max-error" type="number">
+            <div class="div__max-range-error">
+              <img src="images/error-icon.svg">
+              <p class="p__error-message">Enter a valid range</p>
+            </div>
           </form>
           <button id="update-button">UPDATE</button>
         </article>

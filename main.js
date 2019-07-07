@@ -27,9 +27,12 @@ var name1ErrorDiv = document.querySelector('.div__name-1-error');
 var name2ErrorDiv = document.querySelector('.div__name-2-error');
 var guess1ErrorDiv = document.querySelector('.div__guess-1-error');
 var guess2ErrorDiv = document.querySelector('.div__guess-2-error');
+var minError = document.querySelector('.div__min-range-error');
+var maxError = document.querySelector('.div__max-range-error');
+
 
 // Event Listeners
-updateButton.addEventListener('click', updateRange);
+updateButton.addEventListener('click', toggleRangeError);
 submitButton.addEventListener('click', submitHandler);
 resetButton.addEventListener('click', resetGame);
 clearButton.addEventListener('click', clearGame);
@@ -43,6 +46,7 @@ player2Name.addEventListener('keyup', hasGuessInput);
 player2Guess.addEventListener('keyup', hasGuessInput);
 
 // Functions on page load
+toggleRangeError();
 randomNumber(minNumber, maxNumber);
 console.log(randomNum);
 disableButton(updateButton);
@@ -94,15 +98,9 @@ function isRangeGood(){
     if(minInt < maxInt) {
       return true;
     } else {
-      //user entered min >= max
-      clearInputs(minRange, maxRange);
-      alert("bad range");
       return false;
     }
   } else {
-    //user entered e
-    clearInputs(minRange, maxRange);
-    alert("non int");
     return false;
   }
 }
@@ -322,5 +320,20 @@ function hasGuessInput(){
     enableButton(clearButton);
   } else {
     disableButton(clearButton);
+  }
+}
+
+function toggleRangeError() {
+  if(parseInt(minRange.value) >= parseInt(maxRange.value)) {
+    minError.style.visibility = 'visible';
+    minRange.style = 'border: 2px solid #F74D9B';
+    maxError.style.visibility = 'visible';
+    maxRange.style = 'border: 2px solid #F74D9B';
+  } else {
+    minError.style.visibility = 'hidden';
+    minRange.style = 'border: 2px solid #EAEAEA';
+    maxError.style.visibility = 'hidden';
+    maxRange.style = 'border: 2px solid #EAEAEA';
+    updateRange();
   }
 }
