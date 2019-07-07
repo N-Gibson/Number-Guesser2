@@ -23,6 +23,10 @@ var randomNum;
 var player1Hint = document.querySelector('#player-1-hint');
 var player2Hint = document.querySelector('#player-2-hint');
 var rightSection = document.querySelector('.section__right');
+var name1ErrorDiv = document.querySelector('.div__name-1-error');
+var name2ErrorDiv = document.querySelector('.div__name-2-error');
+var guess1ErrorDiv = document.querySelector('.div__guess-1-error');
+var guess2ErrorDiv = document.querySelector('.div__guess-2-error');
 
 // Event Listeners
 updateButton.addEventListener('click', updateRange);
@@ -130,16 +134,8 @@ function isGoodGuess(element) {
     return true;
   } else {
     if(!(Number.isInteger(elementInt))) {
-      //display error message for notInt
-      alert("not integer");
-    } else if(elementInt < minInt) {
-      //display error for less than minimum
-      alert("less than min"); 
-    } else {
-      //display error for more than max
-      alert("more than max");
-    }
     return false;
+    }
   }
 }
 
@@ -149,14 +145,26 @@ function badInputHandler(element, isGood) {
   } else {
     element.style.border = "2px #ED458B solid";
   }
+
+  checkGuesses();
 }
+
 
 function updateGuesses(){
-  guessDisplay1.innerText = player1Guess.value;
-  guessDisplay2.innerText = player2Guess.value;
+  checkNames();
+  checkGuesses();
+  updateBorders();
+
+
+  if(player1Name.value === "" || player2Name.value === "") {
+    return;
+  } else {
+    guessDisplay1.innerText = player1Guess.value;
+    guessDisplay2.innerText = player2Guess.value;
+  }
 }
 
-function updateNames() {
+function updateBorders() {
   if(player1Name.value === "" || player2Name.value === "") {
     
     if(player1Name.value === "") {
@@ -179,15 +187,32 @@ function updateNames() {
       if(player2Name.value !== "") {
         player2Name.style.border = "1px #ccc solid";
       }
-
-      for(var i = 0; i < challenger1.length; i++) {
-        challenger1[i].innerText = player1Name.value;
-      }
-
-      for(var i = 0; i < challenger2.length; i++) {
-        challenger2[i].innerText = player2Name.value;
-      }
     }
+}
+
+function updateNames(){
+  checkNames();
+  checkGuesses();
+  updateBorders();
+  if(player1Guess.value === "" && player2Guess.value === "") {
+    return;
+   } else {
+    changeNames();
+   }
+}
+
+function changeNames() {
+  if(player1Name.value === "" && player2Name.value === "") {
+    return;
+  } else {
+  for(var i = 0; i < challenger1.length; i++) {
+      challenger1[i].innerText = player1Name.value;
+  }
+
+  for(var i = 0; i < challenger2.length; i++) {
+    challenger2[i].innerText = player2Name.value;
+  }
+}
 }
 
 function clearGame() { 
@@ -247,6 +272,38 @@ function appendCard(playerGuess, player1Name, player2Name, winnerName) {
   </article>`)
   } else {
     return;
+  }
+}
+
+function checkNames() {
+  if(player1Name.value === "") {
+    name1ErrorDiv.style.visibility = "visible";
+  } else {
+    name1ErrorDiv.style.visibility = "hidden";
+  }
+
+  if(player2Name.value === "") {
+    name2ErrorDiv.style.visibility = "visible";
+  } else {
+    name2ErrorDiv.style.visibility = "hidden";
+  }
+}
+
+function checkGuesses(){
+  if(player1Guess.value === "") {
+    guess1ErrorDiv.style.visibility = "visible";
+  } else if((player1Name.value === "") && (player1Guess.value === "")) {
+    return;
+  } else {
+    guess1ErrorDiv.style.visibility = "hidden";
+  } 
+
+  if(player2Guess.value === "") {
+    guess2ErrorDiv.style.visibility = "visible";
+  } else if((player2Name.value) === "" && (player2Guess.value === "")) {
+    return;
+  } else {
+    guess2ErrorDiv.style.visibility = "hidden";
   }
 }
 
