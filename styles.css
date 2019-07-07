@@ -127,6 +127,11 @@ input {
   margin: 20px auto 5px auto;
 }
 
+#update-button {
+  bottom: 38px;
+  position: relative;
+}
+
 .article__current-score {
   display: flex;
 }
