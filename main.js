@@ -33,10 +33,21 @@ updateButton.addEventListener('click', updateRange);
 submitButton.addEventListener('click', submitHandler);
 resetButton.addEventListener('click', resetGame);
 clearButton.addEventListener('click', clearGame);
+minRange.addEventListener('keyup', checkRange);
+maxRange.addEventListener('keyup', checkRange);
+minRange.addEventListener('keyup', hasGuessInput);
+maxRange.addEventListener('keyup', hasGuessInput);
+player1Name.addEventListener('keyup', hasGuessInput);
+player1Guess.addEventListener('keyup', hasGuessInput);
+player2Name.addEventListener('keyup', hasGuessInput);
+player2Guess.addEventListener('keyup', hasGuessInput);
 
 // Functions on page load
 randomNumber(minNumber, maxNumber);
 console.log(randomNum);
+disableButton(updateButton);
+disableButton(resetButton);
+disableButton(clearButton);
 
 // Functions
 function submitHandler() {
@@ -64,6 +75,14 @@ function updateRange() {
     clearInputs(minRange, maxRange);
     randomNumber(minInt, maxInt);
     console.log(randomNum);//logs new random number for testing
+  }
+}
+
+function checkRange(){
+  if(minRange.value !== "" && maxRange.value !== "") {
+    enableButton(updateButton);
+  } else {
+    disableButton(updateButton);
   }
 }
 
@@ -102,6 +121,7 @@ function displayGuess() {
 
   if(isGoodInt && isGoodInt2) {
     updateGuesses();
+    enableButton(resetButton);
   }
 }
 
@@ -216,6 +236,9 @@ function resetGame() {
     challenger2[i].innerText = "Challenger 2";
   }
   randomNumber(1,100);
+  disableButton(updateButton);
+  disableButton(resetButton);
+  disableButton(clearButton);
 }
 
 function playerFeedback(playerGuess, playerHint) {
@@ -284,12 +307,20 @@ function checkGuesses(){
   }
 }
 
+function disableButton(button) {
+  button.classList.add('disabled');
+  button.disabled = true;
+}
 
-function checkRange(){
-  var maxInt = parseInt(maxNum.value);
-  var minInt = parseInt(minNum.value);
+function enableButton(button) {
+  button.classList.remove('disabled');
+  button.disabled = false;
+}
 
-  if(minInt >= maxInt) {
-    
+function hasGuessInput(){
+  if((minRange.value !== "") || (maxRange.value !== "") || (player1Name.value !== "") || (player1Guess.value !== "") || (player2Name.value !== "") || (player2Guess.value !== "")) {
+    enableButton(clearButton);
+  } else {
+    disableButton(clearButton);
   }
 }
