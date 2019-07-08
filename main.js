@@ -73,11 +73,11 @@ function updateRange() {
     minNumberDisplay.innerText = minRange.value;
     maxNumberDisplay.innerText = maxRange.value;
 
-    var minInt = parseInt(minNumberDisplay.innerText);
-    var maxInt = parseInt(maxNumberDisplay.innerText);
+    minNumber = parseInt(minNumberDisplay.innerText);
+    maxNumber = parseInt(maxNumberDisplay.innerText);
 
     clearInputs(minRange, maxRange);
-    randomNumber(minInt, maxInt);
+    randomNumber(minNumber, maxNumber);
     console.log(randomNum);//logs new random number for testing
   }
 }
@@ -141,7 +141,6 @@ function badInputHandler(element, isGood) {
   } else {
     element.style.border = "2px #ED458B solid";
   }
-
   checkGuesses();
 }
 
@@ -266,6 +265,8 @@ function appendCard(playerGuess, player1Name, player2Name, winnerName) {
       <p class="card__delete-button">X</p>
     </div>
   </article>`)
+    randomNumber(minNumber = minNumber -10, maxNumber = maxNumber + 10)
+    console.log(randomNum)
   } else {
     return;
   }
