@@ -131,9 +131,7 @@ function isGoodGuess(element) {
   if(Number.isInteger(elementInt) && (elementInt >= minInt) && (elementInt <= maxInt)) {
     return true;
   } else {
-    if(!(Number.isInteger(elementInt))) {
     return false;
-    }
   }
 }
 
@@ -288,7 +286,7 @@ function checkNames() {
 }
 
 function checkGuesses(){
-  if(player1Guess.value === "") {
+  if(player1Guess.value === "" || isGoodGuess(player1Guess) !== true) {
     guess1ErrorDiv.style.visibility = "visible";
   } else if((player1Name.value === "") || (player1Guess.value === "")) {
     return;
@@ -296,7 +294,7 @@ function checkGuesses(){
     guess1ErrorDiv.style.visibility = "hidden";
   } 
 
-  if(player2Guess.value === "") {
+  if(player2Guess.value === "" || isGoodGuess(player2Guess) !== true) {
     guess2ErrorDiv.style.visibility = "visible";
   } else if((player2Name.value) === "" || (player2Guess.value === "")) {
     return;
