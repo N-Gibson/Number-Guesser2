@@ -35,20 +35,26 @@ var maxError = document.querySelector('.div__max-range-error');
 updateButton.addEventListener('click', updateHandler);
 submitButton.addEventListener('click', submitHandler);
 rightSection.addEventListener('click', deleteCard);
-// resetButton.addEventListener('click', resetGame);
-// clearButton.addEventListener('click', clearGame);
-// minRange.addEventListener('keyup', checkRange);
-// maxRange.addEventListener('keyup', checkRange);
-// minRange.addEventListener('keyup', hasGuessInput);
-// maxRange.addEventListener('keyup', hasGuessInput);
+resetButton.addEventListener('click', resetInstructions);
+clearButton.addEventListener('click', () => {
+  clearInputs(player1Guess, player2Guess);
+  toggleClearButton();
+});
+
+minRange.addEventListener('keyup', toggleRangeButton);
+maxRange.addEventListener('keyup', toggleRangeButton);
 // player1Name.addEventListener('keyup', hasGuessInput);
-// player1Guess.addEventListener('keyup', hasGuessInput);
 // player2Name.addEventListener('keyup', hasGuessInput);
-// player2Guess.addEventListener('keyup', hasGuessInput);
+player1Guess.addEventListener('keyup', toggleClearButton);
+player2Guess.addEventListener('keyup', toggleClearButton);
+
 
 // Functions on page load
 randomNumber(minNumber, maxNumber)
 console.log(randomNum)
+disableButton(updateButton);
+disableButton(resetButton);
+disableButton(clearButton);
 
 // Event listener functions
 function submitHandler() {
@@ -59,6 +65,8 @@ function submitHandler() {
   changeNames();
   playerFeedbackHandler();
   clearInputs(player1Guess, player2Guess);
+  toggleClearButton();
+  toggleResetButton();
 }
 
 function updateHandler() {
@@ -81,6 +89,7 @@ function updateRange() {
   randomNumber(min, max);
   updateRangeDom(minRange.value, maxRange.value);
   clearInputs(minRange, maxRange);
+  toggleRangeButton();
 }
 
 function updateRangeDom(min, max) {
@@ -220,3 +229,64 @@ function playerFeedbackHandler() {
   playerFeedback(player2Guess, player2Hint, player2Guess,  player2Name, player1Name, player2Name);
   }
 }
+
+function disableButton(button) {
+  button.classList.add('disabled');
+  button.disabled = true;
+}
+
+function enableButton(button) {
+  button.classList.remove('disabled');
+  button.disabled = false;
+}
+
+function toggleRangeButton() {
+  if(minRange.value === '' || maxRange.value === '') {
+    disableButton(updateButton);
+  } else {
+    enableButton(updateButton);
+  }
+}
+
+function resetInstructions(e) {
+  var allCards = document.querySelectorAll('.section__right-card');
+  player1Name.value = '';
+  player2Name.value = '';
+  guessDisplay1.innerText = '-';
+  guessDisplay2.innerText = '-';
+  player1Hint.innerText = '-';
+  player2Hint.innerText = '-';
+  minNumberDisplay.innerText = '1';
+  maxNumberDisplay.innerText = '100'
+
+  for(var i = 0; i < challenger1.length; i++) {
+    challenger1[i].innerText = 'Challenger 1';
+  }
+
+  for(var i = 0; i < challenger2.length; i++) {
+    challenger2[i].innerText = 'Challenger 2';
+  }
+
+  for(var i = 0; i < allCards.length; i++) {
+    allCards[i].remove();
+  }
+  randomNumber(1, 100);
+  console.log(randomNum);
+  toggleResetButton();
+ }
+
+function toggleResetButton() {
+  if(guessDisplay1.innerText === '-' || guessDisplay2.innerText === '-') {
+    disableButton(resetButton);
+  } else {
+    enableButton(resetButton);
+  }
+}
+
+function toggleClearButton() {
+  if(player1Guess.value === '' || player2Guess.value === '') {
+    disableButton(clearButton);
+  } else {
+    enableButton(clearButton);
+  }
+ }
