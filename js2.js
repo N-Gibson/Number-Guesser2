@@ -181,7 +181,7 @@ function deleteCard(e) {
 }
 
 function updateGuess() {
-  if(player1Guess.value === '' || player2Guess.value === '') {
+  if(player1Guess.value === '' || player2Guess.value === '' || player1Name.value === '' || player2Name.value === '') {
     return;
   } else {
   guessDisplay1.innerText = player1Guess.value;
@@ -223,6 +223,8 @@ function playerFeedbackHandler() {
   } else if(guess1 > parseInt(maxNumberDisplay.innerText) || guess2 > parseInt(maxNumberDisplay.innerText)) {
     return
   } else if(guess1 < parseInt(minNumberDisplay.innerText) || guess2 < parseInt(minNumberDisplay.innerText)) {
+    return;
+  } else if(player1Name.value === '' || player2Name.value === '') {
     return;
   } else {
   playerFeedback(player1Guess, player1Hint, player1Guess, player1Name, player2Name, player1Name);
@@ -296,5 +298,9 @@ function toggleClearButton() {
  }
 
  function count() {
+  if(player1Guess.value !== '' && player2Guess.value !== '' && player1Name.value !== '' && player2Name.value !== '') {
    counter++
+  } else {
+    return;
+  }
  }
