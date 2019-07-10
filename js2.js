@@ -34,6 +34,7 @@ var maxError = document.querySelector('.div__max-range-error');
 // Event Listeners
 updateButton.addEventListener('click', updateHandler);
 submitButton.addEventListener('click', submitHandler);
+rightSection.addEventListener('click', deleteCard);
 // resetButton.addEventListener('click', resetGame);
 // clearButton.addEventListener('click', clearGame);
 // minRange.addEventListener('keyup', checkRange);
@@ -55,8 +56,8 @@ function submitHandler() {
   submitNameError(player2Name.value, name2ErrorDiv, player2Name);
   submitGuessError(player1Guess.value, guess1ErrorDiv, player1Guess);
   submitGuessError(player2Guess.value, guess2ErrorDiv, player2Guess);
-  // playerFeedback(player1Guess, player1Hint, player1Name, player2Name, player1Name);
-  // playerFeedback(player2Guess, player2Hint, player2Name, player1Name, player2Name);
+  playerFeedback(player1Guess, player1Hint, player1Name, player2Name, player1Name);
+  playerFeedback(player2Guess, player2Hint, player2Name, player1Name, player2Name);
   clearInputs(player1Guess, player2Guess);
 }
 
@@ -98,10 +99,9 @@ function errorsOff(location, border) {
 }
 
 function updateRangeErrors() {
-  debugger;
-  var min = Number(minRange.value);
-  var max = Number(maxRange.value);
-  if(min === 0 || max === 0 || min > max) {
+  minNumber = Number(minRange.value);
+  maxNumber = Number(maxRange.value);
+  if(minNumber === 0 || maxNumber === 0 || minNumber > maxNumber) {
     errorsOn(minError, minRange);
     errorsOn(maxError, maxRange);
   } else {
@@ -131,19 +131,20 @@ function submitGuessError(guess, guessDiv, guessLocation) {
 }
 
 function playerFeedback(playerGuess, playerHint, playerName, secondPlayerName, winnerName) {
-  // debugger;
-  if(Number(playerGuess.value) > (randomNum)) {
+  if(parseInt(playerGuess.value) > (randomNum)) {
     playerHint.innerText = ('That\'s too high');
-  } else if(Number(playerGuess.value) < (randomNum)) {
+  } else if(parseInt(playerGuess.value) < (randomNum)) {
     playerHint.innerText = ('That\'s too low');
   } else {
     playerHint.innerText = ('BOOM!!!');
     appendCard(playerGuess, playerName, secondPlayerName, winnerName);
-    appendCard(playerGuess, playerName, secondPlayerName, winnerName);
+    // appendCard(playerGuess, playerName, secondPlayerName, winnerName);
+    console.log(playerGuess.value, typeof(playerGuess.value))
+    console.log(randomNum, typeof(randomNum))
   }
 }
 
-function appendCard(playerGuess, player1Name, player2Name, winnerName) {
+function appendCard(playerGuess, playerName, secondPlayerName, winnerName) {
   if(Number(playerGuess.value) === randomNum) {
     rightSection.insertAdjacentHTML ('afterbegin', `<article class="section__right-card">
     <div class="card-header">
@@ -159,10 +160,17 @@ function appendCard(playerGuess, player1Name, player2Name, winnerName) {
       <p class="card__delete-button">X</p>
     </div>
   </article>`)
-    var winnerMin = parseInt(minNumberDisplay.value) -10;
-    var winnerMax = parseInt(maxNumberDisplay.value) +10;
-    randomNumber(winnerMin, winnerMax)
+    minNumber = parseInt(minNumberDisplay.value) -10;
+    maxNumber = parseInt(maxNumberDisplay.value) +10;
+    randomNumber(minNumber, maxNumber)
+    console.log(randomNum);
   } else {
     return;
+  }
+}
+
+function deleteCard(e) {
+  if(e.target.closest('.card__delete-button')) {
+    e.target.closest('.section__right-card').remove()
   }
 }
