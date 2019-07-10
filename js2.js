@@ -98,9 +98,10 @@ function errorsOff(location, border) {
 }
 
 function updateRangeErrors() {
-  var min = minRange.value;
-  var max = maxRange.value;
-  if(min > max || min === '' || max === '') {
+  debugger;
+  var min = Number(minRange.value);
+  var max = Number(maxRange.value);
+  if(min === 0 || max === 0 || min > max) {
     errorsOn(minError, minRange);
     errorsOn(maxError, maxRange);
   } else {
