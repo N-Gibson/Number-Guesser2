@@ -100,8 +100,8 @@ function isRangeGood(){
     } else {
       return false;
     }
-  } else {
-    return false;
+  // } else {
+  //   return false;
   }
 }
 
@@ -111,11 +111,11 @@ function clearInputs(element1, element2) {
 }
 
 function displayGuess() {
-  var isGoodInt = isGoodGuess(player1Guess);
-  var isGoodInt2 = isGoodGuess(player2Guess);
+  isGoodGuess(player1Guess, minNumberDisplay, maxNumberDisplay);
+  isGoodGuess(player2Guess, minNumberDisplay, maxNumberDisplay);
 
-  badInputHandler(player1Guess, isGoodInt);
-  badInputHandler(player2Guess, isGoodInt2);
+  badInputHandler(player1Guess, guess);
+  badInputHandler(player2Guess, guess);
 
   if(isGoodInt && isGoodInt2) {
     updateGuesses();
@@ -123,17 +123,26 @@ function displayGuess() {
   }
 }
 
-function isGoodGuess(element) {
-  var elementInt = parseInt(element.value);
-  var minInt = parseInt(minNumberDisplay.innerText);
-  var maxInt = parseInt(maxNumberDisplay.innerText);
-
-  if(Number.isInteger(elementInt) && (elementInt >= minInt) && (elementInt <= maxInt)) {
-    return true;
+function isGoodGuess(userGuess, minGuessDisplay, maxGuessDisplay) {
+  // var elementInt = parseInt(element.value);
+  // var minInt = parseInt(minNumberDisplay.innerText);
+  // var maxInt = parseInt(maxNumberDisplay.innerText);
+  if(Number(userGuess > maxGuessDisplay || userGuess < minGuessDisplay)) {
+    // run error on function 
   } else {
-    return false;
+    // run error off function
   }
 }
+
+
+
+  // if(Number.isInteger(elementInt) && (elementInt >= minInt) && (elementInt <= maxInt)) {
+  //   return true;
+  // } else {
+  //   return false;
+  // }
+
+
 
 function badInputHandler(element, isGood) {
   if(isGood) {
