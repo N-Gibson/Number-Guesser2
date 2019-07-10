@@ -1,6 +1,7 @@
 // Gloabal Variables
 var minNumber = 1;
 var maxNumber = 100;
+var counter = 0;
 var minNumberDisplay = document.querySelector('#min-number-display');
 var maxNumberDisplay = document.querySelector('#max-number-display');
 var minRange = document.querySelector('#min-range');
@@ -43,8 +44,6 @@ clearButton.addEventListener('click', () => {
 
 minRange.addEventListener('keyup', toggleRangeButton);
 maxRange.addEventListener('keyup', toggleRangeButton);
-// player1Name.addEventListener('keyup', hasGuessInput);
-// player2Name.addEventListener('keyup', hasGuessInput);
 player1Guess.addEventListener('keyup', toggleClearButton);
 player2Guess.addEventListener('keyup', toggleClearButton);
 
@@ -58,6 +57,7 @@ disableButton(clearButton);
 
 // Event listener functions
 function submitHandler() {
+  count();
   submitNameError(player1Name.value, name1ErrorDiv, player1Name);
   submitNameError(player2Name.value, name2ErrorDiv, player2Name);
   submitGuessError(player1Guess.value, guess1ErrorDiv, player1Guess);
@@ -141,18 +141,17 @@ function submitGuessError(guess, guessDiv, guessLocation,) {
 }
 
 function playerFeedback(playerGuess, playerHint, playerGuess1, playerName, secondPlayerName, winnerName) {
-  // debugger;
   if(parseInt(playerGuess.value) > (randomNum)) {
     playerHint.innerText = ('That\'s too high');
   } else if(parseInt(playerGuess.value) < (randomNum)) {
     playerHint.innerText = ('That\'s too low');
   } else {
     playerHint.innerText = ('BOOM!!!');
-    appendCard(playerGuess1, playerName, secondPlayerName, winnerName);
+    appendCard(playerGuess1, playerName, secondPlayerName, winnerName, counter);
   }
 }
 
-function appendCard(playerGuess1, playerName, secondPlayerName, winnerName) {
+function appendCard(playerGuess1, playerName, secondPlayerName, winnerName, counter) {
   if(playerGuess1.value == randomNum) {
     rightSection.insertAdjacentHTML ('afterbegin', `<article class="section__right-card">
     <div class="card-header">
@@ -163,11 +162,12 @@ function appendCard(playerGuess1, playerName, secondPlayerName, winnerName) {
     <h4 class="card__winner-name">${winnerName.value}</h4>
     <p class="card__winner">WINNER</p>
     <div class="card-footer">
-      <p class="card-footer__game-data"><span>47 </span>GUESSES</p>
+      <p class="card-footer__game-data"><span>${counter}</span>GUESSES</p>
       <p><span>1.3m </span>MINUTES</p>
       <p class="card__delete-button">X</p>
     </div>
   </article>`);
+  counterReset()
   winnerRandmNumber();
   } else {
     return;
@@ -289,4 +289,12 @@ function toggleClearButton() {
   } else {
     enableButton(clearButton);
   }
+ }
+
+ function counterReset() {
+   counter = 0;
+ }
+
+ function count() {
+   counter++
  }
