@@ -56,8 +56,8 @@ function submitHandler() {
   submitNameError(player2Name.value, name2ErrorDiv, player2Name);
   submitGuessError(player1Guess.value, guess1ErrorDiv, player1Guess);
   submitGuessError(player2Guess.value, guess2ErrorDiv, player2Guess);
-  playerFeedback(player1Guess, player1Hint, player1Name, player2Name, player1Name);
-  playerFeedback(player2Guess, player2Hint, player2Name, player1Name, player2Name);
+  changeNames();
+  playerFeedbackHandler();
   clearInputs(player1Guess, player2Guess);
 }
 
@@ -79,13 +79,13 @@ function updateRange() {
   var max = parseInt(maxRange.value);
 
   randomNumber(min, max);
-  updateRangeDom();
+  updateRangeDom(minRange.value, maxRange.value);
   clearInputs(minRange, maxRange);
 }
 
-function updateRangeDom() {
-  minNumberDisplay.innerText = minRange.value;
-  maxNumberDisplay.innerText = maxRange.value;
+function updateRangeDom(min, max) {
+  minNumberDisplay.innerText = min;
+  maxNumberDisplay.innerText = max;
 }
 
 function errorsOn(location, border) {
@@ -120,32 +120,31 @@ function submitNameError(name, errorDiv, errorLocation) {
   } 
 }
 
-function submitGuessError(guess, guessDiv, guessLocation) {
+function submitGuessError(guess, guessDiv, guessLocation,) {
   var minDisplay = parseInt(minNumberDisplay.innerText); 
   var maxDisplay = parseInt(maxNumberDisplay.innerText);
   if(guess > maxDisplay || guess < minDisplay || guess === '') {
     errorsOn(guessDiv, guessLocation);
   } else {
     errorsOff(guessDiv, guessLocation);
+    updateGuess();
   }
 }
 
-function playerFeedback(playerGuess, playerHint, playerName, secondPlayerName, winnerName) {
+function playerFeedback(playerGuess, playerHint, playerGuess1, playerName, secondPlayerName, winnerName) {
+  // debugger;
   if(parseInt(playerGuess.value) > (randomNum)) {
     playerHint.innerText = ('That\'s too high');
   } else if(parseInt(playerGuess.value) < (randomNum)) {
     playerHint.innerText = ('That\'s too low');
   } else {
     playerHint.innerText = ('BOOM!!!');
-    appendCard(playerGuess, playerName, secondPlayerName, winnerName);
-    // appendCard(playerGuess, playerName, secondPlayerName, winnerName);
-    console.log(playerGuess.value, typeof(playerGuess.value))
-    console.log(randomNum, typeof(randomNum))
+    appendCard(playerGuess1, playerName, secondPlayerName, winnerName);
   }
 }
 
-function appendCard(playerGuess, playerName, secondPlayerName, winnerName) {
-  if(Number(playerGuess.value) === randomNum) {
+function appendCard(playerGuess1, playerName, secondPlayerName, winnerName) {
+  if(playerGuess1.value == randomNum) {
     rightSection.insertAdjacentHTML ('afterbegin', `<article class="section__right-card">
     <div class="card-header">
       <p class="card__challengers">${playerName.value}</p>
@@ -159,11 +158,8 @@ function appendCard(playerGuess, playerName, secondPlayerName, winnerName) {
       <p><span>1.3m </span>MINUTES</p>
       <p class="card__delete-button">X</p>
     </div>
-  </article>`)
-    minNumber = parseInt(minNumberDisplay.value) -10;
-    maxNumber = parseInt(maxNumberDisplay.value) +10;
-    randomNumber(minNumber, maxNumber)
-    console.log(randomNum);
+  </article>`);
+  winnerRandmNumber();
   } else {
     return;
   }
@@ -172,5 +168,55 @@ function appendCard(playerGuess, playerName, secondPlayerName, winnerName) {
 function deleteCard(e) {
   if(e.target.closest('.card__delete-button')) {
     e.target.closest('.section__right-card').remove()
+  }
+}
+
+function updateGuess() {
+  if(player1Guess.value === '' || player2Guess.value === '') {
+    return;
+  } else {
+  guessDisplay1.innerText = player1Guess.value;
+  guessDisplay2.innerText = player2Guess.value;
+  }
+}
+
+function changeNames() {
+  if(player1Name.value === "" || player2Name.value === "") {
+    return;
+  } else {
+  for(var i = 0; i < challenger1.length; i++) {
+      challenger1[i].innerText = player1Name.value;
+  }
+
+  for(var i = 0; i < challenger2.length; i++) {
+    challenger2[i].innerText = player2Name.value;
+    }
+  }
+}
+
+function winnerRandmNumber() {
+  if (player1Guess.value == randomNum || player2Guess.value == randomNum) {
+  minNumber = parseInt(minNumberDisplay.innerText) -10;
+  maxNumber = parseInt(maxNumberDisplay.innerText) +10;
+  randomNumber(minNumber, maxNumber);
+  updateRangeDom(minNumber, maxNumber);
+  console.log(randomNum);
+  } else {
+    return;
+  }
+}
+
+function playerFeedbackHandler() {
+  guess1 = Number(player1Guess.value);
+  guess2 = Number(player2Guess.value);
+  if(guess1 === 0 || guess2 === 0) {
+    return;
+  } else if(guess1 > parseInt(maxNumberDisplay.innerText) || guess2 > parseInt(maxNumberDisplay.innerText)) {
+    return
+  } else if(guess1 < parseInt(minNumberDisplay.innerText) || guess2 < parseInt(minNumberDisplay.innerText)) {
+    return;
+  } else {
+  playerFeedback(player1Guess, player1Hint, player1Guess, player1Name, player2Name, player1Name);
+  playerFeedback(player2Guess, player2Hint, player2Guess,  player2Name, player1Name, player2Name);
   }
 }
