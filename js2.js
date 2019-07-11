@@ -155,15 +155,15 @@ function appendCard(playerGuess1, playerName, secondPlayerName, winnerName, coun
   if(playerGuess1.value == randomNum) {
     rightSection.insertAdjacentHTML ('afterbegin', `<article class="section__right-card">
     <div class="card-header">
-      <p class="card__challengers">${playerName.value}</p>
-      <p>VS</p>
-      <p class="card__challengers">${secondPlayerName.value}</p>
+      <p class="card__challengers">${playerName.value.toUpperCase()}</p>
+      <p class="p__winner-vs">VS</p>
+      <p class="card__challengers">${secondPlayerName.value.toUpperCase()}</p>
     </div>
-    <h4 class="card__winner-name">${winnerName.value}</h4>
+    <h4 class="card__winner-name">${winnerName.value.toUpperCase()}</h4>
     <p class="card__winner">WINNER</p>
     <div class="card-footer">
-      <p class="card-footer__game-data"><span>${counter}</span>GUESSES</p>
-      <p><span>1.3m </span>MINUTES</p>
+      <p class="card-footer__game-data"><span class="card__footer-dynamic-data">${counter} </span>GUESSES</p>
+      <p class="card-footer__game-data"><span class="card__footer-dynamic-data">1.3m </span>MINUTES</p>
       <img src='images/x-button.png'>
     </div>
   </article>`);
