@@ -42,20 +42,6 @@ h2 {
   margin: 0px;
 }
 
-/*h2:before,
-h2:after {
-  content: '';
-  border-bottom: 2px solid #ccc;
-  margin: 10px;
-  width: 120px;
-  position: absolute;
-  top: 125px;
-}
-
-h2:before {
-  left: 30%;
-}*/
-
 h2:after, h2:before {
  border-bottom: 2px solid white;
  content: "";
@@ -225,6 +211,7 @@ input {
   font-size: 1.2em;
   margin: 0px;
 }
+
 /* Winner Card */
 
 section {
@@ -246,7 +233,7 @@ section {
 }
 
 .p__winner-vs {
-  margin: auto 90px;
+  margin: auto auto;
 }
 
 .card__challengers {
@@ -284,15 +271,6 @@ h4 {
   text-align: center;
 }
 
-/*.card__delete-button {
-  background-color: #808080;
-  border-radius:50%;
-  color: #d0d2d3;
-  height: 20px;
-  text-align: center;
-  width:20px;
-}*/
-
 .card__x-button {
   margin-top: 10px;
 }
@@ -314,16 +292,6 @@ h4 {
   justify-content: space-between;
 }
 
-/* Error toggle */
-
-/* .input__errors,
-.player-1-name-error,
-.player-1-guess-error, 
-.player-2-name-error,
-.player-2-guess-error {
-  border: 2px solid #ED448A;
-} */
-
 img {
   height: 20px;
   margin: 5px;
@@ -344,4 +312,129 @@ img {
 .p__error-message {
   color: #ED458B;
   margin: 5px 0px 0px 0px;
+}
+
+/* Media queries */
+
+@media screen and (max-width: 1275px) {
+  .form__update-min,
+  .form__update-max,
+  .form__player-1-name,
+  .form__player-2-name, 
+  .form__player-1-guess,
+  .form__player-2-guess {
+    display: block;
+    margin: 0px;
+    width: 100%;
+  }
+
+  button {
+    display: block;
+    margin: auto;
+    width: 100%;
+  }
+
+  #update-button {
+    margin-top: 50px;
+  }
+
+  .buttons__container {
+    flex-direction: column;
+  }
+
+  #submit-button,
+  #reset-button,
+  #clear-button {
+    margin: 10px auto;
+  }
+
+  .card__challengers {
+    font-size: 1em
+  }
+
+  .card__winner-name,
+  .card__winner {
+    font-size: 2.4em;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  main {
+    display: inline;
+  }
+
+  .section__right {
+    display: block;
+    width: 100%;
+  }
+
+  aside {
+    display: block;
+    width: 100%
+  }
+
+  .article {
+    margin: 10px auto;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  h1 {
+    font-size: 2.2em;
+  } 
+
+  h2 {
+    font-size: 1em;
+  }
+
+  header {
+    display: flex;
+    padding: 5px;
+  }
+   
+  .article__current-score {
+    display: block;
+   }  
+
+   .score-left {
+     border-bottom: 1px solid #ccc;
+     border-right: none;
+     display: block;
+     width: 100%;
+   }
+
+  .score-right {
+    border-top: 1px solid #ccc;
+    border-left: none;
+    display: block;
+    width: 100%;
+   }
+
+   .card-header {
+     flex-direction: column;
+     justify-content: center;
+   }
+
+   .p__winner-vs {
+     font-size: .7em;
+   }
+
+   .card__challengers {
+     font-size: 1em;
+     text-align: center;
+   }
+
+   .card__winner-name,
+   .card__winner {
+     font-size: 1.2em;
+   }
+
+   .card-footer__game-data {
+     font-size: .7em;
+   }
+
+   .card__x-button {
+     height: 15px;
+     width: 15px;
+   }
 }
