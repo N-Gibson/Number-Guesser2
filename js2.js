@@ -2,6 +2,7 @@
 var minNumber = 1;
 var maxNumber = 100;
 var counter = 0;
+var randomNum;
 var minNumberDisplay = document.querySelector('#min-number-display');
 var maxNumberDisplay = document.querySelector('#max-number-display');
 var minRange = document.querySelector('#min-range');
@@ -20,7 +21,6 @@ var player1Hint = document.querySelector('#player-1-hint');
 var player2Hint = document.querySelector('#player-2-hint');
 var resetButton = document.querySelector('#reset-button');
 var clearButton = document.querySelector('#clear-button');
-var randomNum;
 var player1Hint = document.querySelector('#player-1-hint');
 var player2Hint = document.querySelector('#player-2-hint');
 var rightSection = document.querySelector('.section__right');
