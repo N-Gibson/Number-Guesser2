@@ -164,7 +164,7 @@ function appendCard(playerGuess1, playerName, secondPlayerName, winnerName, coun
     <div class="card-footer">
       <p class="card-footer__game-data"><span class="card__footer-dynamic-data">${counter} </span>GUESSES</p>
       <p class="card-footer__game-data"><span class="card__footer-dynamic-data">1.3m </span>MINUTES</p>
-      <img src='images/x-button.png'>
+      <img class="card__x-button" src='images/x-button.png'>
     </div>
   </article>`);
   counterReset()
@@ -175,7 +175,7 @@ function appendCard(playerGuess1, playerName, secondPlayerName, winnerName, coun
 }
 
 function deleteCard(e) {
-  if(e.target.closest('.card__delete-button')) {
+  if(e.target.closest('.card__x-button')) {
     e.target.closest('.section__right-card').remove()
   }
 }

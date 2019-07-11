@@ -284,13 +284,17 @@ h4 {
   text-align: center;
 }
 
-.card__delete-button {
+/*.card__delete-button {
   background-color: #808080;
   border-radius:50%;
   color: #d0d2d3;
   height: 20px;
   text-align: center;
   width:20px;
+}*/
+
+.card__x-button {
+  margin-top: 10px;
 }
 
 .card-footer__game-data {
