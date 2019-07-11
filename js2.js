@@ -164,7 +164,7 @@ function appendCard(playerGuess1, playerName, secondPlayerName, winnerName, coun
     <div class="card-footer">
       <p class="card-footer__game-data"><span class="card__footer-dynamic-data">${counter} </span>GUESSES</p>
       <p class="card-footer__game-data"><span class="card__footer-dynamic-data">1.3m </span>MINUTES</p>
-      <p class="card__delete-button">X</p>
+      <img src='images/x-button.png'>
     </div>
   </article>`);
   counterReset()
@@ -181,7 +181,7 @@ function deleteCard(e) {
 }
 
 function updateGuess() {
-  if(player1Guess.value === '' || player2Guess.value === '' || player1Name.value === '' || player2Name.value === '') {
+  if(player1Guess.value === '' || player2Guess.value === '') {
     return;
   } else {
   guessDisplay1.innerText = player1Guess.value;
@@ -223,8 +223,6 @@ function playerFeedbackHandler() {
   } else if(guess1 > parseInt(maxNumberDisplay.innerText) || guess2 > parseInt(maxNumberDisplay.innerText)) {
     return
   } else if(guess1 < parseInt(minNumberDisplay.innerText) || guess2 < parseInt(minNumberDisplay.innerText)) {
-    return;
-  } else if(player1Name.value === '' || player2Name.value === '') {
     return;
   } else {
   playerFeedback(player1Guess, player1Hint, player1Guess, player1Name, player2Name, player1Name);
@@ -298,9 +296,5 @@ function toggleClearButton() {
  }
 
  function count() {
-  if(player1Guess.value !== '' && player2Guess.value !== '' && player1Name.value !== '' && player2Name.value !== '') {
    counter++
-  } else {
-    return;
-  }
  }
