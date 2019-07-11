@@ -50,7 +50,6 @@ player2Guess.addEventListener('keyup', toggleClearButton);
 
 // Functions on page load
 randomNumber(minNumber, maxNumber)
-console.log(randomNum)
 disableButton(updateButton);
 disableButton(resetButton);
 disableButton(clearButton);
@@ -117,7 +116,6 @@ function updateRangeErrors() {
     errorsOff(minError, minRange);
     errorsOff(maxError, maxRange);
     updateRange();
-    console.log(randomNum);
   }
 }
 
@@ -209,7 +207,6 @@ function winnerRandmNumber() {
   maxNumber = parseInt(maxNumberDisplay.innerText) +10;
   randomNumber(minNumber, maxNumber);
   updateRangeDom(minNumber, maxNumber);
-  console.log(randomNum);
   } else {
     return;
   }
@@ -271,7 +268,6 @@ function resetInstructions(e) {
     allCards[i].remove();
   }
   randomNumber(1, 100);
-  console.log(randomNum);
   toggleResetButton();
  }
 
