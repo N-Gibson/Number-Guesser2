@@ -14,3 +14,6 @@
 -This is the original comp.
 <img width="808" alt="desktop" src="https://user-images.githubusercontent.com/49107377/61021027-fab51180-a35c-11e9-9709-5db6babd5359.png">
 <img width="177" alt="mobile" src="https://user-images.githubusercontent.com/49107377/61021020-f688f400-a35c-11e9-854d-739ec373ce8a.png">
+
+## Test the live site!
+https://n-gibson.github.io/Number-Guesser2/
