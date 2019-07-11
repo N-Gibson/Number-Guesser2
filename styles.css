@@ -5,8 +5,8 @@
 body {
   font-family: 'Open Sans', sans-serif;
   height: 100%;
-  width: 100%;
   margin: 0px;
+  width: 100%;
 }
 
 /* Header */
@@ -19,9 +19,9 @@ header {
 }
 
 .div__header {
-  width:625px;
   margin: 0 auto;
   text-align: center;
+  width: 625px;
 }
 
 h1 {
@@ -87,7 +87,7 @@ article {
 }
 
 .article {
-  background-color:#FFFFFF;
+  background-color: #FFFFFF;
   border: 2px solid #EAEAEA;
   margin: 10px;
 }
@@ -186,8 +186,8 @@ input {
 #min-number-display,
 #max-number-display {
   color: #606060;
+  font-weight: 700;
   text-decoration: underline;
-  font-weight: bold;
 }
 
 #player-1-guess-display,
@@ -216,8 +216,8 @@ input {
 
 section {
   background-color: #D1D2D4;
-  width: 50%;
   padding: 20px 40px;
+  width: 50%;
 }
 
 .section__right-card {
@@ -256,18 +256,18 @@ h4 {
 }
 
 .card__winner {
-  text-align: center;
-  font-weight: 300;
-  font-size: 3em;
-  margin: 10px 0 20px 0;
   color: #989898;
+  font-size: 3em;
+  font-weight: 300;
+  margin: 10px 0 20px 0;
+  text-align: center;
 }
   
 .h4__winner {
+  color: #6E6E6E;
   font-size: 2em;
   font-weight: 300;
   margin: 0px 0px 20px 0px;
-  color: #6E6E6E;
   text-align: center;
 }
 
@@ -282,8 +282,8 @@ h4 {
 }
 
 .card__footer-dynamic-data {
-  font-weight: 700;
   color: #808080;
+  font-weight: 700;
 }
 
 .card-footer {
